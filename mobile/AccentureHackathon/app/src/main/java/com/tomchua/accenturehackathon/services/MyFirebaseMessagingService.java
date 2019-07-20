@@ -1,6 +1,7 @@
 package com.tomchua.accenturehackathon.services;
 
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -71,7 +72,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Intent resultIntent = new Intent(getApplicationContext(), ShoppingActivity.class);
 
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
-        notificationUtils.displayNotification(notificationVO, resultIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationUtils.displayNotification(notificationVO, resultIntent);
+        }
         notificationUtils.playNotificationSound();
 
     }

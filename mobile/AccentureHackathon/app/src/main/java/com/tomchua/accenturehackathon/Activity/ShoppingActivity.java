@@ -1,6 +1,7 @@
 package com.tomchua.accenturehackathon.Activity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -22,8 +23,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.darwindeveloper.horizontalscrollmenulibrary.custom_views.HorizontalScrollMenuView;
 import com.darwindeveloper.horizontalscrollmenulibrary.extras.MenuItem;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.special.ResideMenu.ResideMenu;
 import com.tomchua.accenturehackathon.Models.CartItemObject;
 import com.tomchua.accenturehackathon.Models.ItemObject;
@@ -31,10 +42,16 @@ import com.tomchua.accenturehackathon.R;
 import com.tomchua.accenturehackathon.adapter.CashoutListAdapter;
 import com.tomchua.accenturehackathon.adapter.ProductListAdapter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShoppingActivity extends Base {
 
@@ -44,6 +61,11 @@ public class ShoppingActivity extends Base {
     Animation frombottom;
     HorizontalScrollMenuView menu;
     private ResideMenu mResideMenu;
+
+    LoginButton loginButton;
+    CircleImageView circleImageView;
+    TextView txtName,txtEmail;
+    CallbackManager callbackManager;
 
     // carts
     private GridView mListMenu;
@@ -375,7 +397,92 @@ public class ShoppingActivity extends Base {
         dialog.show();
     }
 
-    private void showFacebookLogin(){
+    private void showAuthLogins(){
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_NoTitleBar_Fullscreen);
+        dialog.setContentView(R.layout.dialog_facebooklogin);
+        mDialogs.add(dialog);
+
+
+        loginButton = dialog.findViewById(R.id.login_button);
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions(Arrays.asList("email","public_profile"));
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions(Arrays.asList("email,public_profile"));
+
+        if(AccessToken.getCurrentAccessToken()!=null)
+        {
+            mDialogs.remove(dialog);
+            dialog.cancel();
+            loadUserProfile(AccessToken.getCurrentAccessToken());
+
+        }
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                mDialogs.remove(dialog);
+                dialog.cancel();
+
+            }
+
+            @Override
+            public void onCancel() {
+                mDialogs.remove(dialog);
+                dialog.cancel();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                dialog.dismiss();
+                dialog.cancel();
+
+
+            }
+        });
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
+    }
+
+    private void loadUserProfile(AccessToken newAccessToken)
+    {
+        GraphRequest request = GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response)
+            {
+                try {
+                    String first_name = object.getString("first_name");
+                    String last_name = object.getString("last_name");
+                    String email = object.getString("email");
+                    String id = object.getString("id");
+                    String image_url = "https://graph.facebook.com/"+id+ "/picture?type=normal";
+
+                    txtEmail.setText(email);
+                    txtName.setText(first_name +" "+last_name);
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.dontAnimate();
+
+                    Glide.with(ShoppingActivity.this).load(image_url).into(circleImageView);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        Bundle parameters = new Bundle();
+        parameters.putString("fields","first_name,last_name,email,id");
+        request.setParameters(parameters);
+        request.executeAsync();
 
     }
 }

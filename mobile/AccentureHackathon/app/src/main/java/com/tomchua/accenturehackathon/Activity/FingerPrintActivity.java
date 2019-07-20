@@ -15,15 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.facebook.CallbackManager;
-import com.facebook.login.widget.LoginButton;
 import com.multidots.fingerprintauth.AuthErrorCodes;
 import com.multidots.fingerprintauth.FingerPrintAuthCallback;
 import com.multidots.fingerprintauth.FingerPrintAuthHelper;
 import com.multidots.fingerprintauth.FingerPrintUtils;
 import com.tomchua.accenturehackathon.R;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FingerPrintActivity extends AppCompatActivity implements FingerPrintAuthCallback {
 
@@ -31,12 +27,6 @@ public class FingerPrintActivity extends AppCompatActivity implements FingerPrin
     private ViewSwitcher mSwitcher;
     private Button mGoToSettingsBtn;
     private FingerPrintAuthHelper mFingerPrintAuthHelper;
-
-    private LoginButton loginButton;
-    private CircleImageView circleImageView;
-    private TextView txtName,txtEmail;
-
-    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
