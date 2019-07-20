@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "272445336392",
+    "firebase_url": "https://accenturehackathon-f67f5.firebaseio.com",
+    "project_id": "accenturehackathon-f67f5",
+    "storage_bucket": "accenturehackathon-f67f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272445336392:android:5d9ab9ded88397f8",
+        "android_client_info": {
+          "package_name": "com.tomchua.accenturehackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272445336392-64lnf1uiioeebq6930guoc190kesluh3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tomchua.accenturehackathon",
+            "certificate_hash": "32684dc5735cbff8bd973367e81f94579a61b620"
+          }
+        },
+        {
+          "client_id": "272445336392-ibtjjjhfsufmn3gdsf0lpld23ffabc5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD78dGp63LyIgxGaRjs6U-gq0MuoB8aSZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272445336392-ibtjjjhfsufmn3gdsf0lpld23ffabc5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
