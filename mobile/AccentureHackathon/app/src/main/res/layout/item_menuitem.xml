@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/layout_menu"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/menu_item_background"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_items"
+                android:layout_width="110dp"
+                android:layout_height="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sub1"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/text_itemname"
+                android:layout_toRightOf="@+id/image_items"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="PRODUCT ITEM"
+                android:gravity="left"
+                android:textColor="@color/colorForeground"
+                android:textStyle="bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+            <TextView
+                android:id="@+id/text_itemprice"
+                android:layout_toRightOf="@+id/image_items"
+                android:layout_below="@+id/text_itemname"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="P55.00"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+
+            <LinearLayout
+                android:layout_toRightOf="@+id/image_items"
+                android:layout_below="@+id/text_itemprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/text_qty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x 10"
+                    android:textColor="@color/colorForeground"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/text_totalamount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="P55.00"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorForeground"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_info_black_24dp"
+                android:textSize="40sp"
+                android:textColor="@color/colorForeground"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <com.tomchua.accenturehackathon.design.TextAwesome
+        android:id="@+id/btn_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fa_minus_square"
+        android:textSize="40sp"
+        android:textColor="@color/colorForeground"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>

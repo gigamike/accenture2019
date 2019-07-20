@@ -3,4 +3,6 @@
 
 	<string name="facebook_app_id">136715580279281</string>
 	<string name="fb_login_protocol_scheme">fb136715580279281</string>
+	<string name="peso">₱</string>
+	<string name="qty">x</string>
 </resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#f9f9f9"
+	tools:context=".Activity.ShoppingActivity">
+
+	<ImageView
+		android:id="@+id/clover"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="272dp"
+		android:elevation="6dp"
+		android:src="@drawable/clover"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		android:layout_marginRight="272dp" />
+
+	<LinearLayout
+		android:id="@+id/textsplash"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="300dp"
+		android:elevation="6dp"
+		android:gravity="center"
+		android:orientation="vertical"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Good Morning"
+			android:textColor="#FFF"
+			android:textSize="24sp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Team Hackathron"
+			android:textColor="#FFF"
+			android:textSize="16sp" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/texthome"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginTop="8dp"
+		android:elevation="6dp"
+		android:gravity="left"
+		android:orientation="vertical"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar_home">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Hackathron"
+			android:textColor="#FFF"
+			android:textSize="24sp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Shopping"
+			android:textColor="#FFF"
+			android:textSize="16sp" />
+
+	</LinearLayout>
+
+
+	<RelativeLayout
+		android:id="@+id/menus"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:elevation="6dp"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/texthome"
+		>
+
+		<include
+			android:id="@+id/frame_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_above="@+id/layout_horizontal"
+			layout="@layout/layout_order"/>
+
+	<RelativeLayout
+		android:id="@+id/layout_horizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="12dp"
+		android:background="@color/yellow"
+		android:gravity="bottom">
+
+
+		<com.darwindeveloper.horizontalscrollmenulibrary.custom_views.HorizontalScrollMenuView
+			android:id="@+id/img_list"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:icon_height="40dp"
+			app:icon_width="40dp"
+			app:item_textSize="4dp"
+			app:item_backgroundColor="@color/yellow"
+			app:item_colorSelected="@color/colorPrimary"
+			app:backgroundNotifications="@color/colorPrimary"
+			app:item_marginBottom="4dp"
+			android:layout_marginBottom="12dp"
+			app:item_marginLeft="4dp"
+			android:layout_marginRight="4dp"
+			android:layout_marginTop="4dp"
+			app:item_textColor="#000"
+			/>
+	</RelativeLayout>
+
+
+	</RelativeLayout>
+
+	<ImageView
+		android:id="@+id/bgapp"
+		android:layout_width="526dp"
+		android:layout_height="900dp"
+		android:layout_marginStart="18dp"
+		android:layout_marginLeft="18dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginRight="8dp"
+		android:scaleType="fitXY"
+		android:src="@drawable/bgapp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.943"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<include android:id="@+id/toolbar_home" layout="@layout/toolbar_hamburger"/>
+
+
+</android.support.constraint.ConstraintLayout>

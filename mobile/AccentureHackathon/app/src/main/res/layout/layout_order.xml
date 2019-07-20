@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<include-->
+        <!--android:id="@+id/toolbar"-->
+        <!--layout="@layout/toolbar"/>-->
+
+    <LinearLayout
+        android:id="@+id/layout_overview"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/layout_edge_background2"
+        android:padding="10dp"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/text_totalamount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50.55"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/colorBackground"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Amount"
+            android:gravity="center"
+            android:textColor="@color/colorGray"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/list_items"
+        android:layout_below="@+id/layout_overview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="1" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@mipmap/icon_cart"
+        app:layout_anchorGravity="bottom|right"
+        app:backgroundTint="@color/colorForeground"
+        app:rippleColor="@color/colorForeground"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_clearorder"
+        android:layout_above="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_delete_sweep_black_24dp"
+        app:layout_anchorGravity="bottom|right"
+        app:backgroundTint="@color/colorForeground"
+        app:rippleColor="@color/colorForeground"
+        android:layout_alignParentRight="true"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/btn_clearorder"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorBackground"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:text="CLEAR ORDER(S)"-->
+        <!--android:gravity="center"-->
+        <!--android:visibility="gone"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/colorForeground"-->
+        <!--android:padding="10dp"-->
+        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>-->
+</RelativeLayout>
