@@ -1,0 +1,56 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "hackathron",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello world"
+                    ]
+                },
+                {
+                    "name": "AddProductCarTideIntent",
+                    "slots": [],
+                    "samples": [
+                        "add Tide liquid detergent",
+                        "add Tide liquid detergent to my cart"
+                    ]
+                },
+                {
+                    "name": "ItemCountIntent",
+                    "slots": [],
+                    "samples": [
+                        "add three",
+                        "two",
+                        "add two",
+                        "one",
+                        "add one"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
