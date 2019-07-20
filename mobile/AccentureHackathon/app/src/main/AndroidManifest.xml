@@ -15,15 +15,15 @@
 		android:theme="@style/AppTheme">
 		<activity android:name=".Activity.WebViewer3D"></activity>
 		<activity android:name=".Activity.test1"></activity>
-		<activity android:name=".Activity.CartActivity" >
+		<activity android:name=".Activity.FingerPrintActivity" >
+
+		</activity>
+		<activity android:name=".Activity.ShoppingActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity>
-		<activity android:name=".Activity.ShoppingActivity">
-
 		</activity>
 
 		<meta-data

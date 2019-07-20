@@ -1,5 +1,7 @@
 package com.tomchua.accenturehackathon.Activity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,18 +15,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.facebook.CallbackManager;
+import com.facebook.login.widget.LoginButton;
 import com.multidots.fingerprintauth.AuthErrorCodes;
 import com.multidots.fingerprintauth.FingerPrintAuthCallback;
 import com.multidots.fingerprintauth.FingerPrintAuthHelper;
 import com.multidots.fingerprintauth.FingerPrintUtils;
 import com.tomchua.accenturehackathon.R;
 
-public class CartActivity extends AppCompatActivity implements FingerPrintAuthCallback {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class FingerPrintActivity extends AppCompatActivity implements FingerPrintAuthCallback {
 
     private TextView mAuthMsgTv;
     private ViewSwitcher mSwitcher;
     private Button mGoToSettingsBtn;
     private FingerPrintAuthHelper mFingerPrintAuthHelper;
+
+    private LoginButton loginButton;
+    private CircleImageView circleImageView;
+    private TextView txtName,txtEmail;
+
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +47,7 @@ public class CartActivity extends AppCompatActivity implements FingerPrintAuthCa
         mGoToSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FingerPrintUtils.openSecuritySettings(CartActivity.this);
+                FingerPrintUtils.openSecuritySettings(FingerPrintActivity.this);
             }
         });
 
@@ -52,8 +64,11 @@ public class CartActivity extends AppCompatActivity implements FingerPrintAuthCa
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().equals("1234")){
-                    Toast.makeText(CartActivity.this, "Authentication succeeded.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CartActivity.this, ShoppingActivity.class));
+
+
+//                    Toast.makeText(FingerPrintActivity.this, "Authentication succeeded.", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(FingerPrintActivity.this, ShoppingActivity.class));
+//                    finish();
                 }
             }
 
@@ -103,8 +118,7 @@ public class CartActivity extends AppCompatActivity implements FingerPrintAuthCa
 
     @Override
     public void onAuthSuccess(FingerprintManager.CryptoObject cryptoObject) {
-        Toast.makeText(CartActivity.this, "Authentication succeeded.", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(CartActivity.this, ShoppingActivity.class));
+        showDialogSuccess();
     }
 
     @Override
@@ -121,5 +135,29 @@ public class CartActivity extends AppCompatActivity implements FingerPrintAuthCa
                 mAuthMsgTv.setText(errorMessage);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,ShoppingActivity.class));
+        this.finish();
+    }
+
+    private void showDialogSuccess() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_NoTitleBar_Fullscreen);
+        dialog.setContentView(R.layout.dialog_finger_print_success);
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                dialog.dismiss();
+                Toast.makeText(FingerPrintActivity.this, "Authentication succeeded.", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(FingerPrintActivity.this, ShoppingActivity.class));
+                finish();
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
     }
 }

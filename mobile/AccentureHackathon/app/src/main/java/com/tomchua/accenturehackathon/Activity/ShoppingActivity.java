@@ -362,16 +362,20 @@ public class ShoppingActivity extends Base {
         btnProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Double change = Double.parseDouble(textChange.getText().toString().substring(1, textChange.getText().toString().length()));
-                Double cashAmount = Double.parseDouble(inputAmount.getText().toString().isEmpty() ? "0" : inputAmount.getText().toString());
-                if (cashAmount >= totalCashPayment) {
-                    Toast.makeText(ShoppingActivity.this, "success", Toast.LENGTH_SHORT).show();
-                }
-                else Toast.makeText(ShoppingActivity.this, "failed", Toast.LENGTH_SHORT).show();
+//                Double change = Double.parseDouble(textChange.getText().toString().substring(1, textChange.getText().toString().length()));
+//                Double cashAmount = Double.parseDouble(inputAmount.getText().toString().isEmpty() ? "0" : inputAmount.getText().toString());
+//                if (cashAmount >= totalCashPayment) {
+                    startActivity(new Intent(context,FingerPrintActivity.class));
+//                }
+//                else Toast.makeText(ShoppingActivity.this, "failed", Toast.LENGTH_SHORT).show();
             }
         });
 
         dialog.setCancelable(true);
         dialog.show();
+    }
+
+    private void showFacebookLogin(){
+
     }
 }
