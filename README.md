@@ -1,3 +1,7 @@
+Hackathron is an online platform that connect suppliers by improving their inventory operations to customers together by bringing faster, efficient and without effort selling online experience.
+
+Hackathron, Buy anytime, in anyway. Hackathron King of Online Store.
+
 Team Hackathron
 
     • Mik Galon
