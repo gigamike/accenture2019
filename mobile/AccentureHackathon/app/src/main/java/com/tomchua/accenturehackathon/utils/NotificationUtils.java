@@ -15,7 +15,7 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 
 
-import com.tomchua.accenturehackathon.MainActivity;
+import com.tomchua.accenturehackathon.Activity.MainActivity;
 import com.tomchua.accenturehackathon.Models.NotificationVO;
 import com.tomchua.accenturehackathon.R;
 

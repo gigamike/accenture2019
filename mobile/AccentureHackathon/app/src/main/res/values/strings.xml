@@ -1,3 +1,6 @@
 <resources>
 	<string name="app_name">AccentureHackathon</string>
+
+	<string name="facebook_app_id">434446927403307</string>
+	<string name="fb_login_protocol_scheme">fb434446927403307</string>
 </resources>

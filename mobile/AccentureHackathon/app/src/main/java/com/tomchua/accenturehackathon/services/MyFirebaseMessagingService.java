@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.tomchua.accenturehackathon.MainActivity;
+import com.tomchua.accenturehackathon.Activity.MainActivity;
 import com.tomchua.accenturehackathon.Models.NotificationVO;
 import com.tomchua.accenturehackathon.utils.NotificationUtils;
 
