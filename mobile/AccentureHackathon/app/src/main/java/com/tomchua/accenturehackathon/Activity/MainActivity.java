@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-
             }
 
             @Override
@@ -67,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                txtEmail.setText("chuatomoliver@gmail.com");
-                txtName.setText("tom" +" "+"chua");
+
             }
         });
     }
@@ -97,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadUserProfile(AccessToken newAccessToken)
     {
-        Log.d("accesstoken", " " +newAccessToken );
         GraphRequest request = GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response)
