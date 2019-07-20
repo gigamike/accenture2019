@@ -1,6 +1,7 @@
 package com.tomchua.accenturehackathon.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -54,6 +55,17 @@ public class ShoppingActivity extends Base {
 
     private List<CartItemObject> mCartItemObjects = new ArrayList<>();
     private Vector<Dialog> mDialogs = new Vector<>();
+
+    int [] images = {
+            R.drawable.sub_lipstick,
+            R.drawable.sub2,
+            R.drawable.sub3,
+            R.drawable.sub4,
+            R.drawable.sub5,
+            R.drawable.sub6,
+            R.drawable.sub7,
+            R.drawable.sub3
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +132,8 @@ public class ShoppingActivity extends Base {
     }
 
     private void animate(){
-        bgapp.animate().translationY(-2100).setDuration(1000).setStartDelay(1000);
-        clover.animate().alpha(0).setDuration(800).setStartDelay(600);
+        bgapp.animate().translationY(-2100).setDuration(1000).setStartDelay(1500);
+        clover.animate().alpha(0).setDuration(1500).setStartDelay(700);
         textsplash.animate().translationY(140).alpha(0).setDuration(1000).setStartDelay(1000);
 
         texthome.startAnimation(frombottom);
@@ -142,12 +154,13 @@ public class ShoppingActivity extends Base {
     }
 
     private void initMenu() {
-        menu.addItem("Appliances", R.mipmap.cat1);
+        menu.addItem("Appliances", R.drawable.sub_lipstick);
         menu.addItem("Cars", R.mipmap.cat2);
         menu.addItem("Cosmetics", R.mipmap.cat3);
         menu.addItem("Drone", R.mipmap.cat4);
         menu.addItem("Household", R.mipmap.cat5);
         menu.addItem("laptop", R.mipmap.cat6);
+        menu.addItem("mobile phone", R.mipmap.cat7);
         menu.addItem("mobile phone", R.mipmap.cat7);
     }
 
@@ -191,7 +204,7 @@ public class ShoppingActivity extends Base {
             mCartItemObjects.add(cartItemObject);
         }
 
-        mAdapter = new ProductListAdapter(this, mCartItemObjects);
+        mAdapter = new ProductListAdapter(this, mCartItemObjects,images);
 
         mAdapter.setOnMinusQtyListener(new ProductListAdapter.OnMinusQtyListener() {
             @Override
@@ -202,6 +215,13 @@ public class ShoppingActivity extends Base {
                 mCartItemObjects.get(position).setTotalAmount(price * qty);
                 updateTotalAmount();
                 mAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mAdapter.setOnInfo3DListerner(new ProductListAdapter.OnInfo3DListerner() {
+            @Override
+            public void on3dClick(Integer position) {
+                startActivity(new Intent(context,WebViewer3D.class));
             }
         });
 
@@ -290,6 +310,7 @@ public class ShoppingActivity extends Base {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                animate();
                 dialog.dismiss();
             }
         });

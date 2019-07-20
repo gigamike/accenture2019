@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tomchua.accenturehackathon.Activity.MainActivity;
+import com.tomchua.accenturehackathon.Activity.ShoppingActivity;
 import com.tomchua.accenturehackathon.Models.NotificationVO;
 import com.tomchua.accenturehackathon.utils.NotificationUtils;
 
@@ -67,7 +68,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationVO.setActionDestination(actionDestination);
 
 
-        Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent resultIntent = new Intent(getApplicationContext(), ShoppingActivity.class);
 
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.displayNotification(notificationVO, resultIntent);

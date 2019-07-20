@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,12 +25,14 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
     private List<CartItemObject> mFilteredProductItems;
 
     private LayoutInflater mInflater;
+    private int [] images;
     private ItemFilter mFilter = new ItemFilter();
 
-    public ProductListAdapter(Context context, List<CartItemObject> productList) {
+    public ProductListAdapter(Context context, List<CartItemObject> productList, int[] images) {
         this.mInflater = LayoutInflater.from(context);
         this.mProductList = productList;
         this.mFilteredProductItems = productList;
+        this.images = images;
     }
 
     @Override
@@ -57,6 +60,10 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         TextView textQty = (TextView) view.findViewById(R.id.text_qty);
         TextView textTotalAmount = (TextView) view.findViewById(R.id.text_totalamount);
         TextView btnMinus = (TextView) view.findViewById(R.id.btn_minus);
+        ImageView btnInfo = (ImageView) view.findViewById(R.id.btn_info);
+        ImageView pics = (ImageView)view.findViewById(R.id.image_items);
+
+        pics.setImageResource(images[i]);
 
         textName.setText(mFilteredProductItems.get(i).getItemObject().getItemName());
         textPrice.setText("₱" + new DecimalFormat("###,###,###.00").format(mFilteredProductItems.get(i).getItemObject().getItemPrice()));
@@ -76,11 +83,20 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
             layoutMenu.setBackgroundResource(R.drawable.menu_item_background_inverse);
         }
 
+
+
         final int position = i;
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mOnMinusQtyListener != null) mOnMinusQtyListener.onMinusQty(position);
+            }
+        });
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onInfo3DListerner != null) onInfo3DListerner.on3dClick(position);
             }
         });
 
@@ -95,6 +111,15 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
     public void setOnMinusQtyListener(OnMinusQtyListener listener) {
         this.mOnMinusQtyListener = listener;
+    }
+
+    public interface OnInfo3DListerner{
+        void on3dClick(Integer position);
+    }
+
+    private OnInfo3DListerner onInfo3DListerner;
+    public void setOnInfo3DListerner(OnInfo3DListerner listerner){
+        this.onInfo3DListerner = listerner;
     }
 
 

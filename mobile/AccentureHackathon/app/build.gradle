@@ -51,5 +51,6 @@ dependencies {
     }
 
     implementation 'com.github.MorochoRochaDarwin:HorizontalScrollMenu:2.0.0'
+    compile 'com.multidots:fingerprint-auth:1.0.1'
 
 }

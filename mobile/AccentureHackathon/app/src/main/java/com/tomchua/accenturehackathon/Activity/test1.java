@@ -107,7 +107,7 @@ public class test1 extends AppCompatActivity {
             mCartItemObjects.add(cartItemObject);
         }
 
-        mAdapter = new ProductListAdapter(this, mCartItemObjects);
+//        mAdapter = new ProductListAdapter(this, mCartItemObjects);
 
         mAdapter.setOnMinusQtyListener(new ProductListAdapter.OnMinusQtyListener() {
             @Override
