@@ -50,6 +50,114 @@ class IndexController extends AbstractActionController
       $bot->reply('Welcome to the Hackathron. King of online store. Do you want to order online? by linking your account and saying, add item to my cart.');
     });
 
+    $botman->hears('add Tide liquid detergent to my cart', function (BotMan $bot) {
+      $authService = $this->serviceLocator->get('auth_service');
+      if (!$authService->getIdentity()) {
+        $bot->reply('Please signup or login to your account.');
+      }else{
+        $productId = 26;
+        $quantity = 1;
+        $userId = $this->identity()->id;
+
+        $filter = array(
+  				'product_id' => $productId,
+  				'created_user_id' => $userId,
+  			);
+  			$order = array();
+  			$carts = $this->getCartMapper()->getCarts(false, $filter, $order);
+  			if(count($carts) > 0){
+  				foreach ($carts as $cart) {
+  					$quantity = $cart['quantity'] + $quantity;
+
+  					$currentCart = $this->getCartMapper()->getCart($cart['id']);
+  					if($currentCart){
+  						$currentCart->setQuantity($quantity);
+  						$this->getCartMapper()->save($currentCart);
+  					}
+  				}
+  			}else{
+  				$cart = new CartEntity;
+  				$cart->setProductId($productId);
+  				$cart->setQuantity($quantity);
+  				$cart->setCreatedUserId($userId);
+  				$this->getCartMapper()->save($cart);
+  			}
+        $bot->reply('Tide liquid detergent added to cart.');
+      }
+    });
+
+    $botman->hears('add Ariel liquid detergent to my cart', function (BotMan $bot) {
+      $authService = $this->serviceLocator->get('auth_service');
+      if (!$authService->getIdentity()) {
+        $bot->reply('Please signup or login to your account.');
+      }else{
+        $productId = 27;
+        $quantity = 1;
+        $userId = $this->identity()->id;
+
+        $filter = array(
+  				'product_id' => $productId,
+  				'created_user_id' => $userId,
+  			);
+  			$order = array();
+  			$carts = $this->getCartMapper()->getCarts(false, $filter, $order);
+  			if(count($carts) > 0){
+  				foreach ($carts as $cart) {
+  					$quantity = $cart['quantity'] + $quantity;
+
+  					$currentCart = $this->getCartMapper()->getCart($cart['id']);
+  					if($currentCart){
+  						$currentCart->setQuantity($quantity);
+  						$this->getCartMapper()->save($currentCart);
+  					}
+  				}
+  			}else{
+  				$cart = new CartEntity;
+  				$cart->setProductId($productId);
+  				$cart->setQuantity($quantity);
+  				$cart->setCreatedUserId($userId);
+  				$this->getCartMapper()->save($cart);
+  			}
+        $bot->reply('Ariel liquid detergent added to cart.');
+      }
+    });
+
+    $botman->hears('add Safeguard Soap to my cart', function (BotMan $bot) {
+      $authService = $this->serviceLocator->get('auth_service');
+      if (!$authService->getIdentity()) {
+        $bot->reply('Please signup or login to your account.');
+      }else{
+        $productId = 28;
+        $quantity = 1;
+        $userId = $this->identity()->id;
+
+        $filter = array(
+  				'product_id' => $productId,
+  				'created_user_id' => $userId,
+  			);
+  			$order = array();
+  			$carts = $this->getCartMapper()->getCarts(false, $filter, $order);
+  			if(count($carts) > 0){
+  				foreach ($carts as $cart) {
+  					$quantity = $cart['quantity'] + $quantity;
+
+  					$currentCart = $this->getCartMapper()->getCart($cart['id']);
+  					if($currentCart){
+  						$currentCart->setQuantity($quantity);
+  						$this->getCartMapper()->save($currentCart);
+  					}
+  				}
+  			}else{
+  				$cart = new CartEntity;
+  				$cart->setProductId($productId);
+  				$cart->setQuantity($quantity);
+  				$cart->setCreatedUserId($userId);
+  				$this->getCartMapper()->save($cart);
+  			}
+        $bot->reply('Safeguard Soap added to cart.');
+      }
+    });
+
     // Start listening
     $botman->listen();
 
