@@ -55,6 +55,46 @@ const AddProductCarTideIntentHandler = {
   },
 };
 
+const AddProductCartArielIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'AddProductCartArielIntent';
+  },
+  handle(handlerInput) {
+    var speechText = 'Ariel liquid detergent added to cart';
+
+    var url = `https://accenture2019.gigamike.net/api/cart-add?user_id=10&product_id=27&quantity=1`;
+    request.get(url, (error, response, body) => {
+
+    });
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Added Ariel liquid detergent to cart', speechText)
+      .getResponse();
+  },
+};
+
+const AddProductCartSafeguardSoapIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'AddProductCartSafeguardSoapIntent';
+  },
+  handle(handlerInput) {
+    var speechText = 'Safeguard Soap added to cart';
+
+    var url = `https://accenture2019.gigamike.net/api/cart-add?user_id=10&product_id=28&quantity=1`;
+    request.get(url, (error, response, body) => {
+
+    });
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Added Safeguard Soap detergent to cart', speechText)
+      .getResponse();
+  },
+};
+
 const ItemCountIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -141,6 +181,8 @@ exports.handler = skillBuilder
     HelloWorldIntentHandler,
     AddProductCarTideIntentHandler,
     ItemCountIntentHandler,
+    AddProductCartArielIntentHandler,
+    AddProductCartSafeguardSoapIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
